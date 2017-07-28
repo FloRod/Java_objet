@@ -5,7 +5,7 @@ public class Pizza {
 		String code;
 		String nom;
 		double prix;
-		int index;
+		int index=0;
 
 public Pizza (int id, String code, String nom, double prix){
 	this.id = id;
