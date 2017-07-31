@@ -4,9 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
-public class AjouterPizzaOptionMenu {
+public class AjouterPizzaOptionMenu extends OptionMenu {
 	
-	public void execute(ArrayList<Pizza> tabPizza, Scanner sc){
+	private ArrayList<Pizza> tabPizza;
+	private Scanner sc;
+
+	public AjouterPizzaOptionMenu (ArrayList<Pizza> tabPizza, Scanner sc){
+		this.tabPizza = tabPizza;
+		this.sc = sc;
+		
+	}
+	
+	public void execute(){
 		
 		System.out.println("Sélection ajout d'une nouvelle pizza");
 		System.out.println("Veuillez saisir le code :");

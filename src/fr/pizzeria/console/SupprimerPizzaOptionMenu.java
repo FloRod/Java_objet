@@ -3,9 +3,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
-public class SupprimerPizzaOptionMenu {
+public class SupprimerPizzaOptionMenu extends OptionMenu{
+	
+	private ArrayList<Pizza> tabPizza;
+	private Scanner sc;
 
-	public void execute(ArrayList<Pizza> tabPizza, Scanner sc){
+	public SupprimerPizzaOptionMenu (ArrayList<Pizza> tabPizza, Scanner sc){
+		this.tabPizza = tabPizza;
+		this.sc = sc;
+	}
+
+	public void execute(){
 
 		System.out.println("Sélection du menu Suppression dune pizza");
 		int index = -1; // variable conditionnelle sur le while et parametre de modification d'un objet du tableau

@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
-public class ModifierPizzaOptionMenu {
+public class ModifierPizzaOptionMenu extends OptionMenu{
+	
+	private ArrayList<Pizza> tabPizza;
+	private Scanner sc;
 
-	public void execute(ArrayList<Pizza> tabPizza, Scanner sc){
+	public ModifierPizzaOptionMenu (ArrayList<Pizza> tabPizza, Scanner sc){
+		this.tabPizza = tabPizza;
+		this.sc = sc;
+	}
+
+	public void execute(){
 		
 		int index = -1; // variable conditionnelle sur le while et parametre de modification d'un objet du tableau
 		
