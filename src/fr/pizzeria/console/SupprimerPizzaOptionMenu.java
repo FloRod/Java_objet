@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
-public class SupprimerPizza {
+public class SupprimerPizzaOptionMenu {
 
 	public void execute(ArrayList<Pizza> tabPizza, Scanner sc){
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
-public class MajPizza {
+public class ModifierPizzaOptionMenu {
 
 	public void execute(ArrayList<Pizza> tabPizza, Scanner sc){
 		

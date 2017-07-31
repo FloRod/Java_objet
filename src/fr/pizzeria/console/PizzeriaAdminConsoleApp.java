@@ -34,17 +34,17 @@ public class PizzeriaAdminConsoleApp {
 				}
 			break;
 			case 2 :{
-				AjoutNouvellePizza nouvellePizza = new AjoutNouvellePizza();
+				AjouterPizzaOptionMenu nouvellePizza = new AjouterPizzaOptionMenu();
 				nouvellePizza.execute(tabPizza,sc);
 			}
 			break;
 			case 3 :{
-				MajPizza pizzaModifie = new MajPizza();
+				ModifierPizzaOptionMenu pizzaModifie = new ModifierPizzaOptionMenu();
 				pizzaModifie.execute(tabPizza, sc);
 			}
 			break;
 			case 4 :{
-				SupprimerPizza pizzaSuppr = new SupprimerPizza();
+				SupprimerPizzaOptionMenu pizzaSuppr = new SupprimerPizzaOptionMenu();
 				pizzaSuppr.execute(tabPizza, sc);
 			}
 			break;
