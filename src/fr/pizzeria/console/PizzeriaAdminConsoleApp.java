@@ -10,7 +10,7 @@ public class PizzeriaAdminConsoleApp {
 		Scanner sc= new Scanner(System.in);
 		int choix = 0;
 		
-		ArrayList<Pizza> tabPizza = new ArrayList<Pizza>;
+		ArrayList<Pizza> tabPizza = new ArrayList<Pizza>();
 		
 		tabPizza.add(new Pizza ("PEP", "Pépéroni", 12.5));
 		tabPizza.add(new Pizza ("MAR", "Margherita", 14));
@@ -23,28 +23,29 @@ public class PizzeriaAdminConsoleApp {
 
 		while (choix!=99){
 			//affiche le Menu et récupère la valeur saisie
-			affichageMenu();
+			OptionMenu.affichageMenu();
 			choix = sc.nextInt();
 
 			//Entrée dans le menu
 			switch (choix) {
 			case 1 : {
-				System.out.println("Sélection du menu Liste de pizza");
-				for(int i=0;i<tabPizza.length;i++){
-					System.out.println(tabPizza[i].getCode() + " --> " + tabPizza[i].getNom() + " (" + tabPizza[i].getPrix() + " €)");
+				ListerPizzasOptionMenu menu = new ListerPizzasOptionMenu();
+				menu.execute(tabPizza);
 				}
-			}
 			break;
 			case 2 :{
-				System.out.println("Sélection ajout d'une nouvelle pizza");
+				AjoutNouvellePizza nouvellePizza = new AjoutNouvellePizza();
+				nouvellePizza.execute(tabPizza,sc);
 			}
 			break;
 			case 3 :{
-				System.out.println("Sélection du menu Mise à jour d'une pizza");
+				MajPizza pizzaModifie = new MajPizza();
+				pizzaModifie.execute(tabPizza, sc);
 			}
 			break;
 			case 4 :{
-				System.out.println("Sélection du menu Suppression dune pizza");
+				SupprimerPizza pizzaSuppr = new SupprimerPizza();
+				pizzaSuppr.execute(tabPizza, sc);
 			}
 			break;
 			default : {
@@ -55,15 +56,4 @@ public class PizzeriaAdminConsoleApp {
 		}
 		sc.close();
 	}
-
-	public static void affichageMenu() {
-		System.out.println("\n***** Pizzeria Administration *****");
-		System.out.println("1. Lister les pizzas");
-		System.out.println("2. Ajouter une nouvelle pizza");
-		System.out.println("3. Mettre à jour une pizza");
-		System.out.println("4. Supprimer une pizza");
-		System.out.println("99. Sortir \u263a");
-		System.out.println("Choix du menu :");
-	}
-
 }
