@@ -37,10 +37,10 @@ public class PizzaDaoMemoire implements IPizzaDao{
 	
 	public boolean deletePizza(String codePizza, int index) {
 		
-		for(int i=index; i<tabPizza.size()-1; i++){
-			tabPizza.set(i, tabPizza.get(i+1));
-		}
-		tabPizza.remove(tabPizza.size()-1);
+//		for(int i=index; i<tabPizza.size()-1; i++){
+//			tabPizza.set(i, tabPizza.get(i+1));
+//		}
+		tabPizza.remove(index);
 		return false;
 	}
 	
