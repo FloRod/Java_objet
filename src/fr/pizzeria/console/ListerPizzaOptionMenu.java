@@ -1,21 +1,21 @@
 package fr.pizzeria.console;
-import java.util.ArrayList;
-import fr.pizzeria.model.Pizza;
+//import java.util.ArrayList;
+//import fr.pizzeria.model.Pizza;
 
 public class ListerPizzaOptionMenu extends OptionMenu{
 	
-	private ArrayList<Pizza> tabPizza;
+	private IPizzaDao dao;
 
-	public ListerPizzaOptionMenu (ArrayList<Pizza> tabPizza){
-		this.tabPizza = tabPizza;
+	public ListerPizzaOptionMenu (IPizzaDao dao){
+		this.dao = dao;
 	}
 
 	public void execute(){
 		
 		System.out.println("Sélection du menu Liste de pizza");
-		for(int i=0;i<tabPizza.size();i++){
-			System.out.println(tabPizza.get(i).getCode() + " --> " + tabPizza.get(i).getNom() + " ("
-					+ tabPizza.get(i).getPrix() + " €)");
+		for(int i=0;i<dao.findAllPizzas().size();i++){
+			System.out.println(dao.findAllPizzas().get(i).getCode() + " --> " + dao.findAllPizzas().get(i).getNom() + " ("
+					+ dao.findAllPizzas().get(i).getPrix() + " €)");
 		}
 }
 }

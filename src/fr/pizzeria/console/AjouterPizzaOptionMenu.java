@@ -1,16 +1,16 @@
 package fr.pizzeria.console;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
 public class AjouterPizzaOptionMenu extends OptionMenu {
 	
-	private ArrayList<Pizza> tabPizza;
+	private IPizzaDao dao;
 	private Scanner sc;
 
-	public AjouterPizzaOptionMenu (ArrayList<Pizza> tabPizza, Scanner sc){
-		this.tabPizza = tabPizza;
+	public AjouterPizzaOptionMenu (IPizzaDao dao, Scanner sc){
+		this.dao = dao;
 		this.sc = sc;
 		
 	}
@@ -27,7 +27,11 @@ public class AjouterPizzaOptionMenu extends OptionMenu {
 		System.out.println("Veuillez saisir le prix :");
 		double prix = sc.nextDouble();
 		
-		tabPizza.add(new Pizza (code, nom, prix));
+		//tabPizza.add(new Pizza (code, nom, prix));
+		Pizza nouvellePizza = new Pizza(code, nom, prix);
+		dao.saveNewPizza(nouvellePizza);
+		
+		
 	}
 
 }

@@ -23,14 +23,35 @@ public class PizzaDaoMemoire implements IPizzaDao{
 	public ArrayList<Pizza> findAllPizzas() {
 		return tabPizza;
 	}
-	boolean saveNewPizza(Pizza pizza) {
+	
+	public boolean saveNewPizza(Pizza pizza) {
+		tabPizza.add(pizza);
 		return false;
 	}
-	boolean updatePizza(String codePizza, Pizza pizza) {
+	
+	public boolean updatePizza(String codePizza, Pizza pizza) {
+		int index =existPizza(codePizza);
+		tabPizza.set(index, pizza);
 		return false;
 	}
-	boolean deletePizza(String codePizza) {
+	
+	public boolean deletePizza(String codePizza, int index) {
+		
+		for(int i=index; i<tabPizza.size()-1; i++){
+			tabPizza.set(i, tabPizza.get(i+1));
+		}
+		tabPizza.remove(tabPizza.size()-1);
 		return false;
+	}
+	
+	public int existPizza(String codePizza) {
+		int index = -1;
+		for(int i=0; i<tabPizza.size() && index == -1; i++){
+			if (codePizza.equals(tabPizza.get(i).getCode())){
+				index = i;
+			}
+		}
+		return index;
 	}
 
 }
