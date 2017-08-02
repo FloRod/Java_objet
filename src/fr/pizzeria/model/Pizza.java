@@ -6,11 +6,14 @@ public class Pizza {
 	private String code;
 	private String nom;
 	private double prix;
+	private CategoriePizza cat;
+	
 
-	public Pizza (String code, String nom, double prix){
+	public Pizza (String code, String nom, double prix, CategoriePizza cat){
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
+		this.cat = cat;
 		this.id = nextId;
 		nextId++;
 	}
@@ -41,5 +44,13 @@ public class Pizza {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+
+	public CategoriePizza getCat() {
+		return cat;
+	}
+
+	public void setCat(CategoriePizza cat) {
+		this.cat = cat;
 	}
 }
