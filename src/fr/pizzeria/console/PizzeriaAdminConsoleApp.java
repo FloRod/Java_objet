@@ -1,6 +1,10 @@
 package fr.pizzeria.console;
 import java.util.Scanner;
 
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
+
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
@@ -24,21 +28,36 @@ public class PizzeriaAdminConsoleApp {
 			break;
 			case 2 :{
 				AjouterPizzaOptionMenu nouvellePizza = new AjouterPizzaOptionMenu(dao, sc);
-				nouvellePizza.execute();
+				try {
+					nouvellePizza.execute();
+				} catch (SavePizzaException e) {
+					System.out.println(e.getMessage());
+				}
 			}
 			break;
 			case 3 :{
 				ModifierPizzaOptionMenu pizzaModifie = new ModifierPizzaOptionMenu(dao, sc);
-				pizzaModifie.execute();
+				try {
+					pizzaModifie.execute();
+				} catch (UpdatePizzaException e) {
+					System.out.println(e.getMessage());
+				}
 			}
 			break;
 			case 4 :{
 				SupprimerPizzaOptionMenu pizzaSuppr = new SupprimerPizzaOptionMenu(dao, sc);
-				pizzaSuppr.execute();
+				try {
+					pizzaSuppr.execute();
+				} catch (DeletePizzaException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			case 99 :{
+				System.out.println("Au revoir !");
 			}
 			break;
 			default : {
-				System.out.println("Au revoir !");
+				System.out.println("Saisie incorrecte. Veuillez réesssayer !");
 			}
 			}
 
