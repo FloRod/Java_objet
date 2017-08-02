@@ -18,6 +18,11 @@ public class Pizza {
 		nextId++;
 	}
 
+	public String toString(){
+		return this.code + " --> " + this.nom + " (" + this.prix + " €)" + "\t catégorie " + this.cat.getFeature();
+	}
+	
+	// les getters et setters de la classe Pizza
 	public int getId() {
 		return id;
 	}

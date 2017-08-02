@@ -41,10 +41,11 @@ public class AjouterPizzaOptionMenu extends OptionMenu {
 		System.out.println("Veuillez saisir la caractéristique : (viande, sans viande, poisson)");
 		String choix = sc.next();
 		
-		CategoriePizza cat = CategoriePizza.valueOf(choix);
-		System.out.println(cat);
+		CategoriePizza ajout = CategoriePizza.conversion(choix);
+		System.out.println("feature : " + ajout.getFeature());
+		System.out.println("CategoriePizza : " + ajout);
 		
-		Pizza nouvellePizza = new Pizza(code, nom, prix, cat);
+		Pizza nouvellePizza = new Pizza(code, nom, prix, ajout);
 			dao.saveNewPizza(nouvellePizza);
 	}
 }

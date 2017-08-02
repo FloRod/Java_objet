@@ -15,7 +15,7 @@ public class ListerPizzaOptionMenu extends OptionMenu{
 		System.out.println("Sélection du menu Liste de pizza");
 
 		for(Pizza i : dao.findAllPizzas()){
-			System.out.println(i.getCode() + " --> " + i.getNom() + " (" + i.getPrix() + " €)" + "\t catégorie " + i.getCat().getFeature());
+			System.out.println(i.toString());
 		}
 	}
 }
