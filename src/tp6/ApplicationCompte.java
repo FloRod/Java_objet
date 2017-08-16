@@ -8,49 +8,64 @@ public class ApplicationCompte {
 	public static void main(String[] args) {
 		
 		Scanner sc =new Scanner(System.in);
+		ArrayList<CompteClient> client = new ArrayList<CompteClient>();			//liste de tous les clients
+		ArrayList<CompteClient> tabTriClient = new ArrayList<CompteClient>();	//pour le tri des clients
 		
-		ArrayList<CompteClient> client = new ArrayList<CompteClient>();
-		client.add(new CompteClient(new Client ("Martin", 37), 250, false, 0));
-		client.add(new CompteClient(new Client ("Strome", 28), 1375, true, 450));
-		client.add(new CompteClient(new Client ("Gilbert", 59), 9750, true, 1000));
-		client.add(new CompteClient(new Client ("Ali", 51), 5240, true, 1000));
-		client.add(new CompteClient(new Client ("Macron", 40), 15500, true, 2500));
-		client.add(new CompteClient(new Client ("Matthias", 24), -150, true, 450));
-		client.add(new CompteClient(new Client ("Serendim", 29), 490, false, 0));
-		client.add(new CompteClient(new Client ("Goura", 71), 1500, true, 450));
-		
+		/**
+		 * initialisation des clients dans la liste à l'aide de la méthode getCompte de la classe CompteFactory
+		 */
+		client.add(CompteFactory.getCompte("Martin", 37 , 250, false, 0));
+		client.add(CompteFactory.getCompte("Strome", 28, 1375, true, 450));
+		client.add(CompteFactory.getCompte("Gilbert", 59, 9750, true, 1000));
+		client.add(CompteFactory.getCompte("Ali", 51, 5240, true, 1000));
+		client.add(CompteFactory.getCompte("Macron", 40, 15500, true, 2500));
+		client.add(CompteFactory.getCompte("Matthias", 24, -150, true, 450));
+		client.add(CompteFactory.getCompte("Serendim", 29, 490, false, 0));
+		client.add(CompteFactory.getCompte("Goura", 71, 1500, true, 450));
+	
+		System.out.println("Les clients et leur compte répertoriés dans notre banque sont les suivants : ");
 		for (CompteClient i : client){
 			System.out.println(i.toString());
 		}
-			
 		
-		System.out.println("montant :");
+		
+		/**
+		 * Tri par le solde
+		 */
+		System.out.println("Donnez le montant minimale du solde pour le tri des comptes :");
 		double montant = sc.nextDouble();
-		ArrayList<CompteClient> testClient = new ArrayList<CompteClient>();
 		
-		ExtractionServices test = new ExtractionServices();
-		testClient = test.compteTriSoldeSup(client, montant);
+		ExtractionServices triService = new ExtractionServices();
+		tabTriClient = triService.compteTriSoldeSup(client, montant);
+		System.out.println("Voici les comptes dont le solde est supérieur à " + montant);
 			
-		for (CompteClient i : testClient){
+		for (CompteClient i : tabTriClient){
 			System.out.println(i.toString());
 		}
 		
 		double moyenne = 0;
-		moyenne = test.compteMoyenne(testClient);
-		System.out.println("La moyenne est :" + moyenne);
+		moyenne = triService.compteMoyenne(tabTriClient);
+		System.out.println("La moyenne du solde de ces comptes est " + moyenne);
 		
-		System.out.println("age min :");
+		/**
+		 * Tri par l'âge
+		 */
+		
+		tabTriClient.clear();
+		
+		System.out.println("Donnez l'âge minimal des clients dont les comptes doivent être sélectionnés :");
 		int ageMin = sc.nextInt();
-		System.out.println("age max :");
+		System.out.println("Donnez l'âge maximal des clients dont les comptes doivent être sélectionnés :");
 		int ageMax = sc.nextInt();
-		testClient = test.compteTriAgeClient(client, ageMin, ageMax);
 		
-		for (CompteClient i : testClient){
+		tabTriClient = triService.compteTriAgeClient(client, ageMin, ageMax);
+		System.out.println("Voici les comptes correspondants");
+		for (CompteClient i : tabTriClient){
 			System.out.println(i.toString());
 		}
 		
-		moyenne = test.compteMoyenne(testClient);
-		System.out.println("La moyenne est :" + moyenne);
+		moyenne = triService.compteMoyenne(tabTriClient);
+		System.out.println("La moyenne du solde des comptes sélectionnés est " + moyenne);
 		
 		sc.close();
 	}

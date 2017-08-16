@@ -13,13 +13,22 @@ public class CompteClient {
 		this.plafondDecouvert = plafondDecouvert;
 	}
 	
+	/**
+	 * permet d'ajouter un montant au solde d'un compte
+	 */
 	public void creditCompte(double montant){
 		this.solde += montant;
 	}
 	
+	
+	/**
+	 * permet de débiter un montant au solde d'un compte du moment que ce 
+	 */
 	public void debitCompte(double montant){
 		double plafond = this.solde - montant;
-		if (this.decouvertAutorise && plafond > this.plafondDecouvert){
+		
+		// le plafond est un nombre positif => il faut le convertir en nombre négatif (choix du -1 car plus explicite)
+		if (this.decouvertAutorise && plafond > (this.plafondDecouvert * -1)){
 			this.solde = plafond;
 		}
 		else {
@@ -27,6 +36,7 @@ public class CompteClient {
 		}
 	}
 
+	//getter & setter des attributs de la classe Client
 	public double getSolde() {
 		return solde;
 	}
@@ -59,8 +69,9 @@ public class CompteClient {
 		this.client = client;
 	}
 	
+	
+	//redéfinition de toString
 	public String toString() {
-		
 		return getClient().toString() + this.solde + "\t" + this.decouvertAutorise + " : " + this.plafondDecouvert;
 	}
 }

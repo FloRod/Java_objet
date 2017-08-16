@@ -9,6 +9,7 @@ public class Client {
 		this.age = age;
 	}
 	
+	
 	//getter & setter des attributs de la classe Client
 	public String getNom() {
 		return nom;
@@ -26,6 +27,7 @@ public class Client {
 		this.age = age;
 	}
 	
+	//redéfinition de toString
 	public String toString() {
 		return this.nom + "\t\t" + this.age + "\t";
 	}
