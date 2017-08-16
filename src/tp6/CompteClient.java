@@ -19,7 +19,7 @@ public class CompteClient {
 	
 	public void debitCompte(double montant){
 		double plafond = this.solde - montant;
-		if (this.decouvertAutorise == true && plafond <this.plafondDecouvert){
+		if (this.decouvertAutorise && plafond > this.plafondDecouvert){
 			this.solde = plafond;
 		}
 		else {
@@ -57,5 +57,10 @@ public class CompteClient {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	
+	public String toString() {
+		
+		return getClient().toString() + this.solde + "\t" + this.decouvertAutorise + " : " + this.plafondDecouvert;
 	}
 }

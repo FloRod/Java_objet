@@ -25,4 +25,8 @@ public class Client {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	public String toString() {
+		return this.nom + "\t\t" + this.age + "\t";
+	}
 }

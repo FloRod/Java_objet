@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class ApplicationCompte {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		Scanner sc =new Scanner(System.in);
 		
@@ -21,18 +20,38 @@ public class ApplicationCompte {
 		client.add(new CompteClient(new Client ("Goura", 71), 1500, true, 450));
 		
 		for (CompteClient i : client){
-			System.out.println(i.getClient().getNom() + "\t" + i.getClient().getAge() + "\t" + i.getSolde() + "\t" + i.getPlafondDecouvert());
+			System.out.println(i.toString());
 		}
-			System.out.println("montant :");
-			double montant = sc.nextDouble();
-			ArrayList<CompteClient> testClient = new ArrayList<CompteClient>();
-			ExtractionServices test = new ExtractionServices();
-			testClient = test.compteSoldeSup(client, montant);
 			
-			for (CompteClient j : testClient){
-				System.out.println(j.getClient().getNom() + "\t" + j.getClient().getAge() + "\t" + j.getSolde() + "\t" + j.getPlafondDecouvert());
+		
+		System.out.println("montant :");
+		double montant = sc.nextDouble();
+		ArrayList<CompteClient> testClient = new ArrayList<CompteClient>();
+		
+		ExtractionServices test = new ExtractionServices();
+		testClient = test.compteTriSoldeSup(client, montant);
 			
+		for (CompteClient i : testClient){
+			System.out.println(i.toString());
 		}
+		
+		double moyenne = 0;
+		moyenne = test.compteMoyenne(testClient);
+		System.out.println("La moyenne est :" + moyenne);
+		
+		System.out.println("age min :");
+		int ageMin = sc.nextInt();
+		System.out.println("age max :");
+		int ageMax = sc.nextInt();
+		testClient = test.compteTriAgeClient(client, ageMin, ageMax);
+		
+		for (CompteClient i : testClient){
+			System.out.println(i.toString());
+		}
+		
+		moyenne = test.compteMoyenne(testClient);
+		System.out.println("La moyenne est :" + moyenne);
+		
 		sc.close();
 	}
 
